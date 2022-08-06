@@ -63,6 +63,9 @@ const LoginForm = styled.form`
         background: #52B6FF;
         border-radius: 4.63636px;
         border-style: none;
+        display: flex;
+        align-items:center;
+        justify-content:center;
 
         font-family: 'Lexend Deca';
         font-style: normal;
