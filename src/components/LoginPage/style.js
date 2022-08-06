@@ -4,7 +4,7 @@ const LoginPage = styled.div`
 
     /* background-color:crimson; */
     width:100%;
-    height: 360px;
+    height: 420px;
     margin: calc(60% - 120px) auto;
     display:flex;
     flex-direction:column;
@@ -14,6 +14,17 @@ const LoginPage = styled.div`
     img{
         width:180px;
         height:180px
+    }
+
+    p{
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13.976px;
+        line-height: 17px;
+        text-align: center;
+        text-decoration-line: underline;
+        color: #52B6FF;     
     }
 `
 

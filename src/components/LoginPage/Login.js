@@ -1,5 +1,6 @@
 import icon from "../../img/iconTrackIt.png";
 import {LoginPage, LoginForm} from "./style";
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -11,6 +12,9 @@ function Login() {
                 <input type='password' placeholder='senha' />
                 <button>Entrar</button>
             </LoginForm>
+            <Link to="/cadastro">
+                <p>Não tem uma conta? Cadastre-se!</p>
+            </Link>
         </LoginPage>
     )
 
