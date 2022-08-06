@@ -5,13 +5,17 @@ import { ThreeDots  } from  'react-loader-spinner';
 
 function Login() {
 
+    function accessLogin(event){    
+        event.preventDefault();
+    }
+
     return (
         <LoginPage>
             <img src={icon} alt="ICON" />
-            <LoginForm>
-                <input type='email' placeholder='email' />
-                <input type='password' placeholder='senha' />
-                <button>Entrar</button>
+            <LoginForm onSubmit={accessLogin}>
+                <input type='email' placeholder='email' required/>
+                <input type='password' placeholder='senha' required/>
+                <button type="submit">Entrar</button>
             </LoginForm>
             <Link to="/cadastro">
                 <p>Não tem uma conta? Cadastre-se!</p>

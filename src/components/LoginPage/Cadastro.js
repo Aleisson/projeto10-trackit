@@ -6,15 +6,19 @@ import { ThreeDots  } from  'react-loader-spinner';
 
 function Cadastro() {
 
+    function cadastroLogin(event){    
+        event.preventDefault();
+    }
+
     return (
         <CadastroPage>
             <img src={icon} alt="ICON" />
-            <CadastroForm>
-                <input type='email' placeholder='email' />
-                <input type='password' placeholder='senha' />
-                <input type='text' placeholder='nome' />
-                <input type='url' placeholder='foto' />
-                <button>Cadastrar</button>
+            <CadastroForm onSubmit={cadastroLogin}>
+                <input type='email' placeholder='email' required />
+                <input type='password' placeholder='senha' required/>
+                <input type='text' placeholder='nome' required/>
+                <input type='url' placeholder='foto' required/>
+                <button type="submit">Cadastrar</button>
             </CadastroForm>
             <Link to="/">
                 <p>Já tem uma conta? Faça login!</p>
