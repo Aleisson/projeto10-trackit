@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import icon from "../../img/iconTrackIt.png";
 import {LoginPage, LoginForm} from "./style";
 
