@@ -1,8 +1,10 @@
-import icon from "../../img/iconTrackIt.png";
-import { LoginPage, LoginForm } from "./style";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { Link } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
+
+import icon from "../../img/iconTrackIt.png";
+import { LoginPage, LoginForm } from "./style";
 import {postLogin} from "../../services/tracklit"
 import UserContext from "../../contexts/UserContext";
 
@@ -12,6 +14,7 @@ function Login() {
 
     const [loading, setLoading] = useState(false);
     const {user, setUser} = useContext(UserContext);
+    const navigate = useNavigate();
     const [form, setForm] = useState({});
 
     function handleForm({ value, name }) {
@@ -27,14 +30,22 @@ function Login() {
 
     function accessLogin(event) {
         event.preventDefault();
-
-        const promise = postLogin({email:"testeCA2@teste.com", password:"testeCA2" });
+        setLoading(true);
+        const promise = postLogin({email:form.email, password:form.password });
 
        
 
-        // promise.then( () => {alert("deu certo")});
+        promise.then( (res) => {
+            
+            setUser(res.data);
+            navigate("/habitos")
 
-        // promise.catch(() => alert("deu errado"))
+        });
+
+        promise.catch(() => {
+            alert("Usuario ou Senha não cadastrada");
+            setLoading(false);
+        })
 
        
       
@@ -50,11 +61,11 @@ function Login() {
                 <input type='email' placeholder='email' name="email" onChange={(e) => handleForm({
                     name: e.target.name,
                     value: e.target.value,
-                })} /*required*/ disabled={loading} />
+                })} required disabled={loading} />
                 <input type='password' placeholder='senha' name="password" onChange={(e) => handleForm({
                     name: e.target.name,
                     value: e.target.value,
-                })} /*required*/ disabled={loading} />
+                })} required disabled={loading} />
                 <button type="submit">{loading ? Dots : "Entrar"}</button>
             </LoginForm>
             <Link to="/cadastro">
