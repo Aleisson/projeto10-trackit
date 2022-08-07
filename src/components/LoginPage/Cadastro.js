@@ -29,12 +29,15 @@ function Cadastro() {
 
     function cadastroPost(event) {
         event.preventDefault();
-
+        setLoading(true);
         const promise = postCad({email: form.email, name: form.name, image: form.image, password: form.password});
 
         promise.then(() => navigate("/"));
 
-        promise.catch(() => alert("Usuario já cadastrado"));
+        promise.catch(() => {
+            alert("Usuario já cadastrado")
+            setLoading(false);
+        });
 
 
     }

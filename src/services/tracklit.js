@@ -28,7 +28,7 @@ export {postCad, postLogin }
 
 // function deleteHabit({idHabit, {headers} })
 
-
+// axios.get(api , { headers: {"Authorization" : `Bearer ${token}`} })
 // axios.delete(URL, {
 //     headers: {
 //       Authorization: authorizationToken
