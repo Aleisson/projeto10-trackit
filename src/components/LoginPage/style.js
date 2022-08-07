@@ -46,6 +46,13 @@ const LoginForm = styled.form`
         border: 1px solid #D5D5D5;
         border-radius: 5px;
         padding-left: 10px;
+
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19.976px;
+        line-height: 25px;
+        
     }
 
     input::placeholder{
@@ -78,4 +85,4 @@ const LoginForm = styled.form`
     }
 `
 
-export {LoginPage, LoginForm};
+export { LoginPage, LoginForm };

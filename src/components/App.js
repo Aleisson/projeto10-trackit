@@ -1,19 +1,26 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './LoginPage/Login';
 import Cadastro from './LoginPage/Cadastro';
+import UserContext from "../contexts/UserContext";
+import { useState } from "react";
 
 
-function App(){
 
+function App() {
 
-    return(
+    const [user, setUser] = useState({});
+    console.log(user);
+
+    return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Login />} />
-                    <Route path='/cadastro' element={<Cadastro />} />
-                </Routes>
-            </BrowserRouter>
+            < UserContext.Provider value={{user, setUser}}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Login />} />
+                        <Route path='/cadastro' element={<Cadastro />} />
+                    </Routes>
+                </BrowserRouter>
+            </UserContext.Provider>
         </>
     );
 
