@@ -33,7 +33,48 @@ const NavBarPage =styled.div`
   
 `;
 
-export {NavBarPage}
+const MenuPage = styled.div`
+
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    left: 0;
+    bottom: 0;
+    background: #ffffff;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+    p{
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17.976px;
+        line-height: 22px;
+        text-align: center;
+        color: #52B6FF;
+    }
+
+
+`;
+
+const DivContagem = styled.div`
+
+    width:80px;
+    position:relative;
+    bottom: 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
+    .CircularProgressbar-text {
+    transform: translate(-20px, 5px);
+}
+
+`
+
+export {NavBarPage, MenuPage, DivContagem}
 
 {/* <CircularProgressbar minValue={0} maxValue={7} value={7} text={`${0}%`} />
 </Example> */}

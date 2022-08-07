@@ -4,8 +4,9 @@ import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
 
 
-
+import Menu from "./Menu"
 import NavBar from "./NavBar";
+
 
 
 function Habitos() {
@@ -26,7 +27,7 @@ function Habitos() {
     return (
         <>
             <NavBar />
-     
+            <Menu />
         </>
     );
 }
