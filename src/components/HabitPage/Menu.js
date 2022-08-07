@@ -14,6 +14,7 @@ function Menu() {
             <DivContagem>
                 <CircularProgressbar
                     value={77}
+                    minValue={0}
                     text={`Hoje`}
                     background
                     backgroundPadding={5}
