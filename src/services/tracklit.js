@@ -13,56 +13,46 @@ function postLogin(user){
     return promise;
 }
 
+function postHabit(body, token){
+    const promise = axios.post(`${BASE_URL}/habits`, body,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
-export {postCad, postLogin }
+function getHabit(token){
+    const promise = axios.get(`${BASE_URL}/habits`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
-// function postHabit(body, header){
-//     const promise = axios.post(`${BASE_URL}/habits`, body, header);
-//     return promise;
-// }
+function deleteHabit(idHabit,token){
+    const promise = axios.get(`${BASE_URL}/habits/${idHabit}`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
-// function getHabit(body){
-//     const promise = axios.get(`${BASE_URL}/habits`);
-//     return promise;
-// }
+function todayHabit(token){
+    const promise= axios.get(`${BASE_URL}/habits/today`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
-// function deleteHabit({idHabit, {headers} })
+function checkHabit(idHabit,token){
+    const promise = axios.get(`${BASE_URL}/habits/${idHabit}/check`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
-// axios.get(api , { headers: {"Authorization" : `Bearer ${token}`} })
-// axios.delete(URL, {
-//     headers: {
-//       Authorization: authorizationToken
-//     },
-//     data: {
-//       source: source
-//     }
-//   })
-
-// const headers = {
-//     'Authorization': authorizationToken
-//   }
-//   const data = {
-//     user_id: 32
-//   }
-  
-//   axios.delete(API_URL, {headers, data})
-
-// function postBooking(body) {
-//     const promise = axios.post(`${BASE_URL}/seats/book-many`, body);
-//     return promise;
-//   }
-  
+function uncheckHabit(idHabit,token){
+    const promise = axios.get(`${BASE_URL}/habits/${idHabit}/check`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
 
 
-// function getMovies() {
-//     const promise = axios.get(`${BASE_URL}/movies`);
-//     return promise;
-// }
+function getHistory(token){
+    const promise = axios.get(`${BASE_URL}/habits/history/daily`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    return promise;
+}
+
+export {postCad, postLogin, postHabit, getHabit, deleteHabit, todayHabit, checkHabit, uncheckHabit, getHistory}
 
 
 
-// function getShowtimes(movieId) {
-//     const promise = axios.get(`${BASE_URL}/movies/${movieId}/showtimes`);
-//     return promise;
-// }
 
+
+    
