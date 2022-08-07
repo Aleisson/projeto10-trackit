@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
+
+
 
 import NavBar from "./NavBar";
 
@@ -12,7 +15,7 @@ function Habitos() {
     }
     const { user } = useContext(UserContext);
 
-   
+
 
 
     function postHeader(event) {
@@ -21,11 +24,12 @@ function Habitos() {
     }
 
     return (
-       <>
-       <NavBar />
-        
-       </>
+        <>
+            <NavBar />
+     
+        </>
     );
 }
 
 export default Habitos;
+

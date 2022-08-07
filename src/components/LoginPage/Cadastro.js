@@ -30,7 +30,7 @@ function Cadastro() {
     function cadastroPost(event) {
         event.preventDefault();
         setLoading(true);
-        const promise = postCad({email: form.email, name: form.name, image: form.image, password: form.password});
+        const promise = postCad({email: form.email, name: form.name, image: form.image?form.image:"https://cdn-icons-png.flaticon.com/512/149/149071.png", password: form.password});
 
         promise.then(() => navigate("/"));
 
@@ -58,10 +58,10 @@ function Cadastro() {
                     name: e.target.name,
                     value: e.target.value,
                 })} required disabled={loading}/>
-                <input type='url' placeholder='foto' name="image" onChange={(e) => handleForm({
+                <input type='url' placeholder='foto (opcional)' name="image" onChange={(e) => handleForm({
                     name: e.target.name,
                     value: e.target.value,
-                })} required disabled={loading}/>
+                })} disabled={loading}/>
                 <button type="submit">{loading ? Dots : "Cadastrar"}</button>
             </CadastroForm>
             <Link to="/">

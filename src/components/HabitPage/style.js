@@ -10,6 +10,9 @@ const NavBarPage =styled.div`
     padding: 0 10px;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top:0;
+    left:0;
 
     p{
         font-family: 'Playball';
@@ -27,7 +30,10 @@ const NavBarPage =styled.div`
         border-radius: 98.5px;
     }
 
-   
+  
 `;
 
 export {NavBarPage}
+
+{/* <CircularProgressbar minValue={0} maxValue={7} value={7} text={`${0}%`} />
+</Example> */}
