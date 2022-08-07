@@ -2,22 +2,29 @@ import { useContext } from "react";
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
 
-function Habitos(){
-    
-    const {user} = useContext(UserContext);
+import NavBar from "./NavBar";
 
-    
 
-    function postHeader(event){
-        event.preventDefault();
-        
+function Habitos() {
+
+    const userTemp = {
+        image: "http://s3.amazonaws.com/gt7sp-prod/decal/24/48/63/4620724079169634824_1.png", name: "testeCA2"
     }
-    
-    return(
-        <form onSubmit={postHeader}>
-            <input type="submit"/>
+    const { user } = useContext(UserContext);
 
-        </form>
+   
+
+
+    function postHeader(event) {
+        event.preventDefault();
+
+    }
+
+    return (
+       <>
+       <NavBar />
+        
+       </>
     );
 }
 
