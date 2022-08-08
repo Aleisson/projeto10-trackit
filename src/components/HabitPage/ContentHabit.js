@@ -52,9 +52,14 @@ function Habito({ name, days, id, atualizaHabitos }) {
         alert("Token: " + user.token);
         if(window.confirm("Tem certeza que deseja apagar esse habito")){
             deleteHabit(id,user.token);
+            
             const promise = getHabit(user.token);
 
-            promise.them(x => atualizaHabitos(x.data))
+            promise.then(
+                (res) => {
+                    atualizaHabitos(res.data)
+                }
+            );
             
         }
     }
@@ -62,7 +67,7 @@ function Habito({ name, days, id, atualizaHabitos }) {
     return (
         <HabitoPage>
             <img onClick={() => apagarHabito(id)} src={lixeira} alt="lixeira"></img>
-            <p>{name}</p>
+            <p>{id}</p>
             <DaysPage>
                {array}
             </DaysPage>
