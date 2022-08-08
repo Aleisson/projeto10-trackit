@@ -6,31 +6,33 @@ import UserContext from "../../contexts/UserContext";
 
 import Menu from "./Menu"
 import NavBar from "./NavBar";
+import ContentHabit from "./ContentHabit";
 
 
 
 function Habitos() {
 
-    const userTemp = {
-        image: "http://s3.amazonaws.com/gt7sp-prod/decal/24/48/63/4620724079169634824_1.png", name: "testeCA2"
-    }
+    
     const { user } = useContext(UserContext);
 
 
 
 
-    function postHeader(event) {
-        event.preventDefault();
 
-    }
 
     return (
-        <>
+        <HabitosPage>
             <NavBar />
+            <ContentHabit />
             <Menu />
-        </>
+        </HabitosPage>
     );
 }
 
 export default Habitos;
 
+const HabitosPage = styled.div`
+    background-color: #F2F2F2;
+    height:600px;
+    width:100%
+`
