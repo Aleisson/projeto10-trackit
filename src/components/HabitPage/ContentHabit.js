@@ -1,21 +1,67 @@
 import styled from "styled-components";
 import lixeira from "../../img/lixeira.png";
+import { useContext, useEffect, useState } from "react";
+import { getHabit, postHabit, deleteHabit } from "../../services/tracklit"
+import UserContext from "../../contexts/UserContext";
+import HabitDayContext from "../../contexts/UserContext";
 
-function Habito(title, days) {
-   
-    title = "Ler 1 capítulo de livro"
+function Habito({ name, days, id }) {
+
+    const {user} = useContext(UserContext);
+
+    let array = [1, 2, 3, 4, 5, 6, 7];
+    let daysIN = [<DayIN>D</DayIN>,
+    <DayIN>S</DayIN>,
+    <DayIN>T</DayIN>,
+    <DayIN>Q</DayIN>,
+    <DayIN>Q</DayIN>,
+    <DayIN>S</DayIN>,
+    <DayIN>S</DayIN>]
+    let daysOUT = [<DayOut>D</DayOut>,
+    <DayOut>S</DayOut>,
+    <DayOut>T</DayOut>,
+    <DayOut>Q</DayOut>,
+    <DayOut>Q</DayOut>,
+    <DayOut>S</DayOut>,
+    <DayOut>S</DayOut>]
+
+    function apagarHabito(id){
+
+        window.confirm("Tem certeza que deseja apagar esse habito");
+        console.log(id);
+        
+        console.log(user.token);
+
+    }
+
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < days.length; j++) {
+            if (array[i] === days[j]) {
+                array[i] = "IN";
+            }
+
+        }
+
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        if(array[i] === "IN"){
+            array[i]=daysIN[i];
+        }else{
+            array[i] = daysOUT[i];
+        }
+        
+    }
+
+    console.log(array);
+
     return (
         <HabitoPage>
-            <img src={lixeira} alt="lixeira"></img>
-            <p>{title}</p>
+            <img onClick={() => apagarHabito({id})} src={lixeira} alt="lixeira"></img>
+            <p>{name}</p>
             <DaysPage>
-                <DayIN>D</DayIN>
-                <DayOut>S</DayOut>
-                <DayIN>T</DayIN>
-                <DayOut>Q</DayOut>
-                <DayIN>Q</DayIN>
-                <DayOut>S</DayOut>
-                <DayIN>S</DayIN>
+               {array}
             </DaysPage>
         </HabitoPage>
     );
@@ -100,8 +146,22 @@ const DayOut = styled.div`
 
 function ContentHabit() {
 
+    const { user } = useContext(UserContext);
+    const [habitos, setHabitos] = useState([]);
 
-    
+    useEffect(() => {
+
+        const promise = getHabit(user.token);
+
+        promise.then(
+            (res) => {
+                setHabitos(res.data)
+            }
+        );
+        console.log(habitos)
+    }, []);
+
+
 
     return (
         <ContentPage>
@@ -109,7 +169,10 @@ function ContentHabit() {
                 <h3>Meus hábitos</h3>
                 <button>+</button>
             </AddHabit>
-            <Habito/>
+            {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} />)
+                : <ParamHabit>
+                    Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
+                </ParamHabit>}
         </ContentPage>
     )
 
@@ -140,7 +203,6 @@ const AddHabit = styled.div`
     display:flex;
     justify-content: space-between;
     align-items:center;
-
     padding: 0 10px;
 
 
@@ -173,9 +235,7 @@ const AddHabit = styled.div`
     }
 `;
 
-{/* <ParamHabit>
-    Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
-</ParamHabit>
+
 
 const ParamHabit = styled.p`
     font-family: 'Lexend Deca';
@@ -185,4 +245,4 @@ const ParamHabit = styled.p`
     line-height: 22px;
     color: #666666;
     padding: 0 10px;
-` */}
+` 
