@@ -3,11 +3,12 @@ import lixeira from "../../img/lixeira.png";
 import { useContext, useEffect, useState } from "react";
 import { getHabit, postHabit, deleteHabit } from "../../services/tracklit"
 import UserContext from "../../contexts/UserContext";
-import HabitDayContext from "../../contexts/UserContext";
+import HabitoContext from "../../contexts/HabitoContext";
 
-function Habito({ name, days, id, atualizaHabitos }) {
+function Habito({ name, days, id}) {
 
     const {user} = useContext(UserContext);
+    const {setHabitos} = useContext(HabitoContext);
     
     let array = [1, 2, 3, 4, 5, 6, 7];
     let daysIN = [<DayIN>D</DayIN>,
@@ -48,26 +49,27 @@ function Habito({ name, days, id, atualizaHabitos }) {
     }
 
     function apagarHabito(id){
-        alert("ID: " + id);
-        alert("Token: " + user.token);
+        // alert("ID: " + id);
+        // alert("Token: " + user.token);
         if(window.confirm("Tem certeza que deseja apagar esse habito")){
             deleteHabit(id,user.token);
-            
+    
             const promise = getHabit(user.token);
 
             promise.then(
                 (res) => {
-                    atualizaHabitos(res.data)
+                    setHabitos(res.data)
                 }
             );
             
         }
     }
 
+   
     return (
         <HabitoPage>
             <img onClick={() => apagarHabito(id)} src={lixeira} alt="lixeira"></img>
-            <p>{id}</p>
+            <p>{name}</p>
             <DaysPage>
                {array}
             </DaysPage>
@@ -154,10 +156,10 @@ const DayOut = styled.div`
 `;
 
 
-function ContentHabit() {
+function ContentHabito() {
 
     const { user } = useContext(UserContext);
-    const [habitos, setHabitos] = useState([]);
+    const {habitos, setHabitos}= useContext(HabitoContext);
 
    
     useEffect(() => {
@@ -170,12 +172,14 @@ function ContentHabit() {
             }
         );
         console.log(habitos)
-    }, []);
+    }, [HabitoContext]);
 
  
-    function atualizaHabitos(data){
-        setHabitos(data);
-    }
+    // postHabit({
+    //     name: user.name,
+    //     days: [1, 3, 5] // segunda, quarta e sexta
+    // }, user.token)
+    
    
     return (
         <ContentPage>
@@ -183,7 +187,7 @@ function ContentHabit() {
                 <h3>Meus hábitos</h3>
                 <button>+</button>
             </AddHabit>
-            {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} id={x.id} atualizaHabitos={atualizaHabitos}/>)
+            {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} id={x.id} />)
                 : <ParamHabit>
                     Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                 </ParamHabit>}
@@ -193,14 +197,14 @@ function ContentHabit() {
 
 }
 
-export default ContentHabit;
+export default ContentHabito;
 
 const ContentPage = styled.div`
 
     width:100%;
     height:auto;
     margin-top:80px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     padding: 0 10px;
     display: flex;
     flex-direction: column;

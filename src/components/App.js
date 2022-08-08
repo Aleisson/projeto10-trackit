@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import UserContext from "../contexts/UserContext";
-import HabitDayContext from "../contexts/UserContext";
+import HabitoContext from "../contexts/HabitoContext";
 import Login from './LoginPage/Login';
 import Cadastro from './LoginPage/Cadastro';
 import Habitos from "./HabitPage/Habitos";
@@ -15,7 +15,7 @@ import Historico from "./HistoricoPage/Historico";
 function App() {
 
     const [user, setUser] = useState({});
-    const [habit, setHabit] = useState([]);
+    const [habitos, setHabitos] = useState([]);
     const [habitDay, setHabitDay] = useState([]);
 
     console.log(user);
@@ -23,8 +23,8 @@ function App() {
     return (
         <>
 
-            <HabitDayContext.Provider value={{ habitDay, setHabitDay, habit, setHabit }}>
-                < UserContext.Provider value={{ user, setUser,setHabit, }}>
+            <HabitoContext.Provider value={{habitos, setHabitos}}>
+                < UserContext.Provider value={{ user, setUser}}>
                     <BrowserRouter>
                         <Routes>
                             <Route path='/' element={<Login />} />
@@ -35,7 +35,7 @@ function App() {
                         </Routes>
                     </BrowserRouter>
                 </UserContext.Provider>
-            </HabitDayContext.Provider>
+            </HabitoContext.Provider>
 
         </>
     );

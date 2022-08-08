@@ -71,8 +71,37 @@ const DivContagem = styled.div`
     .CircularProgressbar-text {
     transform: translate(-20px, 5px);
 }
+`
+
+const HabitoPage = styled.div`
+
+    width: 100%;
+    height: 91px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px 10px;
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    justify-content: space-between;
+    margin-top:10px;
+    margin-bottom: 10px;
+
+    img{
+        position:absolute;
+        right:30px
+    }
+    p{
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19.976px;
+        line-height: 25px;
+        color: #666666;
+    }
 
 `
+
 
 export {NavBarPage, MenuPage, DivContagem}
 
