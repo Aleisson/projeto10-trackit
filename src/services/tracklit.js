@@ -24,7 +24,7 @@ function getHabit(token){
 }
 
 function deleteHabit(idHabit,token){
-    const promise = axios.get(`${BASE_URL}/habits/${idHabit}`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    const promise = axios.delete(`${BASE_URL}/habits/${idHabit}`,{ headers: {"Authorization" : `Bearer ${token}`} });
     return promise;
 }
 

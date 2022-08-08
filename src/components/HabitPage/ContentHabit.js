@@ -5,10 +5,10 @@ import { getHabit, postHabit, deleteHabit } from "../../services/tracklit"
 import UserContext from "../../contexts/UserContext";
 import HabitDayContext from "../../contexts/UserContext";
 
-function Habito({ name, days, id }) {
+function Habito({ name, days, id, atualizaHabitos }) {
 
     const {user} = useContext(UserContext);
-
+    
     let array = [1, 2, 3, 4, 5, 6, 7];
     let daysIN = [<DayIN>D</DayIN>,
     <DayIN>S</DayIN>,
@@ -25,14 +25,7 @@ function Habito({ name, days, id }) {
     <DayOut>S</DayOut>,
     <DayOut>S</DayOut>]
 
-    function apagarHabito(id){
-
-        window.confirm("Tem certeza que deseja apagar esse habito");
-        console.log(id);
-        
-        console.log(user.token);
-
-    }
+   
 
 
     for (let i = 0; i < array.length; i++) {
@@ -54,11 +47,21 @@ function Habito({ name, days, id }) {
         
     }
 
-    console.log(array);
+    function apagarHabito(id){
+        alert("ID: " + id);
+        alert("Token: " + user.token);
+        if(window.confirm("Tem certeza que deseja apagar esse habito")){
+            deleteHabit(id,user.token);
+            const promise = getHabit(user.token);
+
+            promise.them(x => atualizaHabitos(x.data))
+            
+        }
+    }
 
     return (
         <HabitoPage>
-            <img onClick={() => apagarHabito({id})} src={lixeira} alt="lixeira"></img>
+            <img onClick={() => apagarHabito(id)} src={lixeira} alt="lixeira"></img>
             <p>{name}</p>
             <DaysPage>
                {array}
@@ -79,6 +82,8 @@ const HabitoPage = styled.div`
     flex-direction:column;
     align-items:start;
     justify-content: space-between;
+    margin-top:10px;
+    margin-bottom: 10px;
 
     img{
         position:absolute;
@@ -149,6 +154,7 @@ function ContentHabit() {
     const { user } = useContext(UserContext);
     const [habitos, setHabitos] = useState([]);
 
+   
     useEffect(() => {
 
         const promise = getHabit(user.token);
@@ -161,15 +167,18 @@ function ContentHabit() {
         console.log(habitos)
     }, []);
 
-
-
+ 
+    function atualizaHabitos(data){
+        setHabitos(data);
+    }
+   
     return (
         <ContentPage>
             <AddHabit>
                 <h3>Meus hábitos</h3>
                 <button>+</button>
             </AddHabit>
-            {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} />)
+            {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} id={x.id} atualizaHabitos={atualizaHabitos}/>)
                 : <ParamHabit>
                     Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                 </ParamHabit>}

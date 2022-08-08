@@ -23,8 +23,8 @@ function App() {
     return (
         <>
 
-            <HabitDayContext.Provider value={{ habitDay, setHabitDay, habit, setHabit }}>
-                < UserContext.Provider value={{ user, setUser }}>
+        
+                < UserContext.Provider value={{ user, setUser,habit, setHabit }}>
                     <BrowserRouter>
                         <Routes>
                             <Route path='/' element={<Login />} />
@@ -35,7 +35,7 @@ function App() {
                         </Routes>
                     </BrowserRouter>
                 </UserContext.Provider>
-            </HabitDayContext.Provider>
+      
 
         </>
     );
