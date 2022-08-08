@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Menu from "../HabitPage/Menu"
 import NavBar from "../HabitPage/NavBar";
+import ContentHistorico from "./ContentHistorico";
 
 function Historico(){
 
     return(
         <HistoricoPage>
             <NavBar />
+            <ContentHistorico />
              <Menu />
         </HistoricoPage>
     );

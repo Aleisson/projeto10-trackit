@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Menu from "../HabitPage/Menu"
 import NavBar from "../HabitPage/NavBar";
+import ContentHoje from "./ContentHoje";
 
 
 function Hoje(){
@@ -8,6 +9,7 @@ function Hoje(){
     return(
         <HojePage>
            <NavBar />
+           <ContentHoje />
            <Menu />     
         </HojePage>
     );

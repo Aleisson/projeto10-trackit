@@ -73,37 +73,73 @@ const DivContagem = styled.div`
 }
 `
 
-const HabitoPage = styled.div`
 
-    width: 100%;
-    height: 91px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    padding: 10px 10px;
+const AddHabit = styled.div`
+
+    width:100%;
+    height:60px;
     display:flex;
-    flex-direction:column;
-    align-items:start;
     justify-content: space-between;
-    margin-top:10px;
-    margin-bottom: 10px;
+    align-items:center;
+    padding: 0 10px;
 
-    img{
-        position:absolute;
-        right:30px
-    }
-    p{
+
+    h3{
         font-family: 'Lexend Deca';
         font-style: normal;
         font-weight: 400;
-        font-size: 19.976px;
-        line-height: 25px;
-        color: #666666;
+        font-size: 22.976px;
+        line-height: 29px;
+        color: #126BA5;
     }
 
-`
+    button{
+        border-style:none;
+        width: 40px;
+        height: 35px;
+        background: #52B6FF;
+        border-radius: 4.63636px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 26.976px;
+        line-height: 34px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+`;
 
 
-export {NavBarPage, MenuPage, DivContagem}
 
-{/* <CircularProgressbar minValue={0} maxValue={7} value={7} text={`${0}%`} />
-</Example> */}
+const ParamHabit = styled.p`
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.976px;
+    line-height: 22px;
+    color: #666666;
+    padding: 0 10px;
+` 
+
+const ContentPage = styled.div`
+
+    width:100%;
+    height:auto;
+    margin-top:80px;
+    margin-bottom: 100px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+
+
+
+`;
+
+
+export {NavBarPage, MenuPage, DivContagem,AddHabit,ParamHabit, ContentPage}
+

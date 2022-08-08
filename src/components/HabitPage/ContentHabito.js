@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { getHabit, postHabit, deleteHabit } from "../../services/tracklit"
 import UserContext from "../../contexts/UserContext";
 import HabitoContext from "../../contexts/HabitoContext";
+import {AddHabit,ParamHabit,ContentPage} from "./style";
 
 function Habito({ name, days, id}) {
 
@@ -217,68 +218,4 @@ function ContentHabito() {
 
 export default ContentHabito;
 
-const ContentPage = styled.div`
 
-    width:100%;
-    height:auto;
-    margin-top:80px;
-    margin-bottom: 100px;
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-
-
-
-`;
-
-const AddHabit = styled.div`
-
-    width:100%;
-    height:60px;
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 0 10px;
-
-
-    h3{
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 22.976px;
-        line-height: 29px;
-        color: #126BA5;
-    }
-
-    button{
-        border-style:none;
-        width: 40px;
-        height: 35px;
-        background: #52B6FF;
-        border-radius: 4.63636px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 26.976px;
-        line-height: 34px;
-        text-align: center;
-        color: #FFFFFF;
-    }
-`;
-
-
-
-const ParamHabit = styled.p`
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17.976px;
-    line-height: 22px;
-    color: #666666;
-    padding: 0 10px;
-` 
