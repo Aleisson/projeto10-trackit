@@ -1,8 +1,4 @@
-import { useContext } from "react";
 import styled from "styled-components";
-import UserContext from "../../contexts/UserContext";
-
-
 import Menu from "./Menu"
 import NavBar from "./NavBar";
 import ContentHabito from "./ContentHabito";
@@ -10,14 +6,6 @@ import ContentHabito from "./ContentHabito";
 
 
 function Habitos() {
-
-    
-    const { user } = useContext(UserContext);
-
-
-
-
-
 
     return (
         <HabitosPage>

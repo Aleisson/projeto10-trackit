@@ -155,11 +155,28 @@ const DayOut = styled.div`
 
 `;
 
+function NovoHabito() {
+
+    const {user} = useContext(UserContext);
+    const {setHabitos} = useContext(HabitoContext);
+   
+   
+    return (
+        <HabitoPage>
+            <p>teste</p>
+            <DaysPage>
+               
+            </DaysPage>
+        </HabitoPage>
+    );
+
+}
 
 function ContentHabito() {
 
     const { user } = useContext(UserContext);
     const {habitos, setHabitos}= useContext(HabitoContext);
+    const [novoHabito, setNovoHabito] = useState(false);
 
    
     useEffect(() => {
@@ -177,7 +194,7 @@ function ContentHabito() {
  
     // postHabit({
     //     name: user.name,
-    //     days: [1, 3, 5] // segunda, quarta e sexta
+    //     days: [1, 2, 3,4, 5,6,7] // segunda, quarta e sexta
     // }, user.token)
     
    
@@ -187,6 +204,7 @@ function ContentHabito() {
                 <h3>Meus hábitos</h3>
                 <button>+</button>
             </AddHabit>
+            {novoHabito?<NovoHabito/>:""}
             {habitos.length ? habitos.map((x) => <Habito name={x.name} days={x.days} id={x.id} />)
                 : <ParamHabit>
                     Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
